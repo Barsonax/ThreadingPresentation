@@ -1,0 +1,6 @@
+obj/
+bin/
+.vs
+sample.md
+.tmp/
+.idea
