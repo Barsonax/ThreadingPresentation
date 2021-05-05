@@ -4,7 +4,7 @@ transition: "slide"
 highlightTheme: "vs2015"
 slideNumber: true
 logoImg: "https://github.com/Barsonax/threadingpresentation/raw/master/images/threading.jpeg"
-title: "NUKE build presentation"
+title: "Threading presentation"
 enableTitleFooter: false
 ---
 
