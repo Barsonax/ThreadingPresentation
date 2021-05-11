@@ -32,8 +32,8 @@ enableTitleFooter: false
 ---
 
 ## Waarom multi threaded programming?
-- Meer doen in minder tijd
 - Schalen met aantal cores
+- Meer doen in minder tijd
 
 ---
 
@@ -45,7 +45,32 @@ enableTitleFooter: false
 ---
 
 ## Wat is een Thread?
-- System.Threading.Thread
+- `System.Threading.Thread`
+- Duur om aan te maken!
+```csharp
+var thread = new Thread(() => Console.WriteLine("Iam executing on a thread"));            
+thread.Start();
+```
+
+--
+
+## De threadpool
+- `System.Threading.ThreadPool`
+- Hergebruiken van threads
+```csharp
+ThreadPool.QueueUserWorkItem(c => Console.WriteLine("Well, that’s just lazy writing."));
+```
+
+--
+
+## TPL (Task Parallel Library)
+- De gangbare manier om parallele code te schrijven
+- `System.Threading.Tasks.Task`
+- `System.Threading.Tasks.Parallel` (oa for and foreach)
+- `System.Threading.Tasks.Dataflow`
+```csharp
+var taskA = Task.Run(() => Console.WriteLine("Hello from taskA."));
+```
 
 ---
 
@@ -57,9 +82,11 @@ enableTitleFooter: false
 
 ## lock keyword
 - ~20ns overhead, meer voor contested locks
+- Niet alles kan parallel
+- De instance parameter geeft de scope aan
 
 ```csharp
-lock (x)
+lock (instance)
 {
     // Your code...
 }
@@ -83,9 +110,19 @@ finally
 }
 ```
 
+--
+
+## Deadlock
+- Is niet deadpool
+- Lock niet op public instances
+- Neem locks altijd in dezelfde volgorde
+
 ---
+
 ## Interlocked
 - ~20ns overhead
+- Heeft methods om operaties atomic te maken
+- Beperkte set mogelijkheden
 
 ```csharp
     // Simple increment/decrement operations:
@@ -105,12 +142,20 @@ finally
     // Update a field only if it matches a certain value (10):
     Console.WriteLine (Interlocked.CompareExchange (ref _sum,
                                                     123, 10);  
-``` 
+```
+
+--
+
+## Atomic?
+- Eigenschap van een operatie
+- Niet te verdelen in substappen vanuit het oogpunt van een andere thread
+- Andere threads zien dus of de waarde voor of de waarde na de operatie
 
 ---
 
 ## Wat is een Memory barrier?
 - Voorkomt het herorderen van geheugen toegang
+- Lock en interlocked maken al een memory barrier.
 - https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread.memorybarrier
 
 --
