@@ -17,8 +17,8 @@ enableTitleFooter: false
 ---
 
 ## In deze presentatie
-- Wat is Multi threaded programming?
-- Waarom Multi threaded programming?
+- Wat is multi threaded programming?
+- Waarom multi threaded programming?
 - De techniek in
 - Vragen
 
@@ -39,6 +39,7 @@ enableTitleFooter: false
 
 ## Hoe gebruik je multi threaded programming?
 - Threads
+- Synchronisatie
 - Locking
 - Memory barriers
 
@@ -113,7 +114,6 @@ finally
 --
 
 ## Deadlock
-- Is niet deadpool
 - Lock niet op public instances
 - Neem locks altijd in dezelfde volgorde
 
@@ -153,8 +153,16 @@ finally
 
 ---
 
+## Compiler en cpu optimalisaties
+- Correct in de context van een enkele thread.
+- Kan gedrag veranderen als er meerdere threads zijn die met elkaar communiceren.
+- Voor correct gedrag moeten we sommige optimalisaties uitzetten.
+
+--
+
 ## Wat is een Memory barrier?
-- Voorkomt het herorderen van geheugen toegang
+- Voorkomt het herorderen van geheugen toegang.
+- Nodig voor correcte communicatie tussen threads.
 - Lock en interlocked maken al een memory barrier.
 - https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread.memorybarrier
 
@@ -164,64 +172,33 @@ finally
 - ~10ns overhead
 
 ```csharp
-public void SetFlag(int flag)
+static public void Thread1()
 {
-    var flags = m_flags;
+    y = 1;  // Store y
     Thread.MemoryBarrier();
-    m_flags = flags | flag;
+    r1 = x; // Load x            
 }
 ```
 
 --
 
 ## Volatile
-
-
+- Minder strict dan MemoryBarrier
+- Acquire fence op reads, operaties na een read komen niet voor de read.
+- Release fence op writes, operaties voor de write komen niet na de write.
+- Een write gevolgt door een read kan nog steeds verwisseld worden!
 
 ---
 
-## Anti patterns and how to fix them
+## Code voorbeelden
 
---
+---
 
-## Locking on public fields
+## Samengevat
+- Multithreading is lastig.
+- Hou het simpel, een lock is vaak al genoeg.
+- Gebruik .NET classes zoals Lazy en Tasks.
 
-```csharp
-lock (this){ }
-```
-```csharp
-lock (somePublicField){ }
-```
-```csharp
-lock (someInternalField){ }
-```
+---
 
---
-
-## Double checked locking
--
-```csharp
-// Business.Api\AppService\Operator\SettingsAppService.cs : 179
-private void Initialize()
-{
-    if (!_isInitialized)
-    {
-        lock (this)
-        {
-            if (!_isInitialized)
-            {
-                _settings = _context.tSettings.ToDictionary(s => s.sSettingID, s => s.sValue);
-                _isInitialized = true;
-            }
-        }
-    }
-}
-```
-
---
-
-## The Fix
-
-```csharp
-private Lazy<Dictionary<string, string>> _settings;
-```
+## Vragen?
