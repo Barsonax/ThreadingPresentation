@@ -3,7 +3,7 @@ theme : "white"
 transition: "slide"
 highlightTheme: "vs2015"
 slideNumber: true
-logoImg: "https://github.com/Barsonax/threadingpresentation/raw/master/images/threading.jpeg"
+
 title: "Threading presentation"
 enableTitleFooter: false
 ---
@@ -11,7 +11,7 @@ enableTitleFooter: false
 ## Multi threaded programming
 
 <a>
-    <img style="border: unset; box-shadow: unset" data-src="https://github.com/Barsonax/threadingpresentation/raw/master/images/threading.jpeg">
+    <img style="border: unset; box-shadow: unset" data-src="https://github.com/Barsonax/threadingpresentation/raw/master/images/bd534296c00eda2c7a74c05855d29b0c.jpg">
 </a>
 
 ---
