@@ -160,7 +160,7 @@ finally
 --
 
 ## Wat is een Memory barrier?
-- Voorkomt het herorderen van geheugen toegang.
+- Voorkomt het herorderen van instructies.
 - Nodig voor correcte communicatie tussen threads.
 - Lock en interlocked maken al een memory barrier.
 - https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread.memorybarrier
