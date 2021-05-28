@@ -8,7 +8,7 @@ namespace DoubleCheckedLockSingleton
         static void Main(string[] args)
         {
             // This example is hard to reproduce because its behavior can change based on platform, versions and if the compiler likes you.
-            // Its simpler and more correct to just use Lazy<T>.
+            // Fix: Its simpler and more correct to just use Lazy<T>.
         }
     }
     

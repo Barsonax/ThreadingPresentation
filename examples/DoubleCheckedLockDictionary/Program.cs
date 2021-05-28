@@ -14,6 +14,7 @@ namespace DoubleCheckedLockDictionary
         {
             // Inspired by Uptrends.DashboardEngine.Business.LanguageProvider.InitializeLanguageList
             // Dictionary is not threadsafe and accessing it from multiple threads at the same time will lead to undetermined behavior.
+            // Fix: Always access the dictionary through a lock or use ConcurrentDictionary from the System.Collections.Concurrent namespace
 
             var counter = 0;
             try

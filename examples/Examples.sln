@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryBarrier", "MemoryBarr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleCheckedLockDictionary", "DoubleCheckedLockDictionary\DoubleCheckedLockDictionary.csproj", "{881DB146-ED40-41C8-B3D8-9A24BC808ADC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks", "Tasks\Tasks.csproj", "{12FEFD90-CC13-44B7-9BFF-AD4A7499E4C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{881DB146-ED40-41C8-B3D8-9A24BC808ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{881DB146-ED40-41C8-B3D8-9A24BC808ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{881DB146-ED40-41C8-B3D8-9A24BC808ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12FEFD90-CC13-44B7-9BFF-AD4A7499E4C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12FEFD90-CC13-44B7-9BFF-AD4A7499E4C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12FEFD90-CC13-44B7-9BFF-AD4A7499E4C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12FEFD90-CC13-44B7-9BFF-AD4A7499E4C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

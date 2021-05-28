@@ -8,7 +8,7 @@ title: "Threading presentation"
 enableTitleFooter: false
 ---
 
-## Multi threaded programming
+## Multithreadeding
 
 <a>
     <img style="border: unset; box-shadow: unset" data-src="https://github.com/Barsonax/threadingpresentation/raw/master/images/bd534296c00eda2c7a74c05855d29b0c.jpg">
@@ -17,33 +17,31 @@ enableTitleFooter: false
 ---
 
 ## In deze presentatie
-- Wat is multi threaded programming?
-- Waarom multi threaded programming?
-- De techniek in
-- Vragen
+- Wat is multithreaded?
+- Waarom multithreaded?
+- Hoe gebruik je multithreading?
+- Code voorbeelden.
+- Vragen.
 
 ---
 
-## Wat is multi threaded programming?
-- Meerdere acties tegelijkertijd uitvoeren
-- Niet hetzelfde als asynchroon, kan wel samen
-- Complex
+## Wat is multithreading?
+- Meerdere acties tegelijkertijd uitvoeren.
+- Niet hetzelfde als asynchroon, kan wel samen.
+- Complex.
 
 ---
 
-## Waarom multi threaded programming?
-- Schalen met aantal cores
-- Meer doen in minder tijd
+## Waarom multithreading?
+- Schalen met aantal cores.
+- Meer doen in minder tijd.
 
 ---
 
-## Hoe gebruik je multi threaded programming?
-- Threads
-- Synchronisatie
-- Locking
-- Memory barriers
 
----
+## Hoe gebruik je multithreading?
+
+--
 
 ## Wat is een Thread?
 - `System.Threading.Thread`
@@ -57,7 +55,7 @@ thread.Start();
 
 ## De threadpool
 - `System.Threading.ThreadPool`
-- Hergebruiken van threads
+- Hergebruiken van threads.
 ```csharp
 ThreadPool.QueueUserWorkItem(c => Console.WriteLine("Well, that’s just lazy writing."));
 ```
@@ -65,7 +63,7 @@ ThreadPool.QueueUserWorkItem(c => Console.WriteLine("Well, that’s just lazy wr
 --
 
 ## TPL (Task Parallel Library)
-- De gangbare manier om parallele code te schrijven
+- De gangbare manier om parallele code te schrijven.
 - `System.Threading.Tasks.Task`
 - `System.Threading.Tasks.Parallel` (oa for and foreach)
 - `System.Threading.Tasks.Dataflow`
@@ -76,15 +74,15 @@ var taskA = Task.Run(() => Console.WriteLine("Hello from taskA."));
 ---
 
 ## Wat is een Lock?
-- Mutual exclusion
+- Mutual exclusion.
 - https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/lock-statement
 
 --
 
 ## lock keyword
-- ~20ns overhead, meer voor contested locks
-- Niet alles kan parallel
-- De instance parameter geeft de scope aan
+- ~20ns overhead, meer voor contested locks.
+- Niet alles kan parallel.
+- De instance parameter geeft de scope aan.
 
 ```csharp
 lock (instance)
@@ -114,15 +112,15 @@ finally
 --
 
 ## Deadlock
-- Lock niet op public instances
-- Neem locks altijd in dezelfde volgorde
+- Lock niet op public instances.
+- Neem locks altijd in dezelfde volgorde.
 
 ---
 
 ## Interlocked
 - ~20ns overhead
-- Heeft methods om operaties atomic te maken
-- Beperkte set mogelijkheden
+- Heeft methods om operaties atomic te maken.
+- Beperkte set mogelijkheden.
 
 ```csharp
     // Simple increment/decrement operations:
@@ -148,8 +146,9 @@ finally
 
 ## Atomic?
 - Eigenschap van een operatie
-- Niet te verdelen in substappen vanuit het oogpunt van een andere thread
-- Andere threads zien dus of de waarde voor of de waarde na de operatie
+- Niet te verdelen in substappen vanuit het oogpunt van een andere thread.
+- Andere threads zien dus of de waarde voor of de waarde na de operatie.
+- Bepaalde operaties zijn al atomic.
 
 ---
 
@@ -197,7 +196,7 @@ static public void Thread1()
 ## Samengevat
 - Multithreading is lastig.
 - Hou het simpel, een lock is vaak al genoeg.
-- Gebruik .NET classes zoals Lazy en Tasks.
+- Gebruik .NET classes zoals Lazy, Tasks en de concurrent collections.
 
 ---
 
